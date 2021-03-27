@@ -33,4 +33,16 @@ struct DecimalCalculator: Addable,
             print("십진 계산에 적합하지 않은 연산자입니다.")
         }
     }
+    
+    mutating func multiply(_ operatedNumber: T, and operatingNumber: T) {
+        guard let poppedElement = stack.pop() else { fatalError() }
+        let result = poppedElement * inputAndConvertType()
+        stack.push(result)
+    }
+    
+    mutating func divide(_ operatedNumber: T, and operatingNumber: T) {
+        guard let poppedElement = stack.pop() else { fatalError() }
+        let result = poppedElement / inputAndConvertType()
+        stack.push(result)
+    }
 }
