@@ -16,8 +16,6 @@ protocol Subtractable {
 
 extension Subtractable {
     mutating func subtract(_ operatedNumber: T, and operatingNumber: T) {
-        let sumResult = stack.subtractAllElements()
-        stack.reset()
-        stack.push(sumResult)
+        stack.push(operatedNumber - operatingNumber)
     }
 }

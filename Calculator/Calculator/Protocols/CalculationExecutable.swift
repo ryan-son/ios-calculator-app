@@ -7,8 +7,8 @@
 
 import Foundation
 
-protocol CalculationMethodSwitchable {
+protocol CalculationExecutable {
     associatedtype Operator
     
-    func switchCalculationMethod(to operator: Operator)
+    mutating func executeCalculation(of operator: Operator)
 }
