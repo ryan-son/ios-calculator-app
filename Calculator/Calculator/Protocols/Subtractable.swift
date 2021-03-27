@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+protocol Subtractable {
+    associatedtype T: Numeric
+    
+    var stack: Stack<T> { get set }
+    mutating func subtract(_ operatedNumber: T, and operatingNumber: T)
+}
+
+extension Subtractable {
+    mutating func subtract(_ operatedNumber: T, and operatingNumber: T) {
+        let sumResult = stack.subtractAllElements()
+        stack.reset()
+        stack.push(sumResult)
+    }
+}

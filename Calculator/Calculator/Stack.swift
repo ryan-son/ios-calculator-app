@@ -34,4 +34,13 @@ extension Stack where T: Numeric {
         
         return sumResult
     }
+    
+    mutating func subtractAllElements() -> T {
+        var sumResult: T = 0
+        for element in self.list {
+            sumResult -= element
+        }
+        
+        return sumResult
+    }
 }
