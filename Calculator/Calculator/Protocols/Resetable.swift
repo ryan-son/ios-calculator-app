@@ -8,5 +8,5 @@
 import Foundation
 
 protocol Resetable {
-    func reset()
+    mutating func reset()
 }
