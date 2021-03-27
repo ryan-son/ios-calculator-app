@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol CalculationMethodSwitchable {
+    associatedtype Operator
+    
+    func switchCalculationMethod(to operator: Operator)
+}
