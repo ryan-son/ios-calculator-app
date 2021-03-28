@@ -31,20 +31,16 @@ struct Stack<T>: CustomStringConvertible {
 
 extension Stack where T: Numeric {
     mutating func sumAllElements() -> T {
-        var sumResult: T = 0
-        
-        for element in self.list {
-            sumResult += element
+        let sumResult: T = self.list.reduce(0) { (result, currentItem) -> T in
+            return result + currentItem
         }
         
         return sumResult
     }
     
     mutating func subtractAllElements() -> T {
-        var subtractResult: T = (self.list.first ?? 0) * 2
-        
-        for element in self.list {
-            subtractResult -= element
+        let subtractResult: T = self.list.reduce((self.list.first ?? 0) * 2) { (result, currentItem) -> T in
+            return result - currentItem
         }
         
         return subtractResult
