@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Stack<T> {
+struct Stack<T>: CustomStringConvertible {
     private(set) var list: [T] = []
     var isEmpty: Bool { return self.list.isEmpty }
     var top: T? { return self.list.last }
@@ -22,6 +22,10 @@ struct Stack<T> {
     
     mutating func reset() {
         self.list.removeAll()
+    }
+    
+    var description: String {
+        return "\(self.list)"
     }
 }
 
