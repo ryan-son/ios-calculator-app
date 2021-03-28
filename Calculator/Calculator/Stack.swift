@@ -32,6 +32,7 @@ struct Stack<T>: CustomStringConvertible {
 extension Stack where T: Numeric {
     mutating func sumAllElements() -> T {
         var sumResult: T = 0
+        
         for element in self.list {
             sumResult += element
         }
@@ -41,6 +42,7 @@ extension Stack where T: Numeric {
     
     mutating func subtractAllElements() -> T {
         var subtractResult: T = (self.list.first ?? 0) * 2
+        
         for element in self.list {
             subtractResult -= element
         }
