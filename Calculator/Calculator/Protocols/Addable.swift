@@ -11,11 +11,11 @@ protocol Addable {
     associatedtype T: Numeric
     
     var stack: Stack<T> { get set }
-    mutating func add(_ operatedNumber: T, and operatingNumber: T)
+    func add(_ operatedNumber: T, and operatingNumber: T) -> T
 }
 
 extension Addable {
-    mutating func add(_ operatedNumber: T, and operatingNumber: T) {
-        stack.push(operatedNumber + operatingNumber)
+    func add(_ operatedNumber: T, and operatingNumber: T) -> T {
+        return operatedNumber + operatingNumber
     }
 }
