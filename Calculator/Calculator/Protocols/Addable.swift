@@ -2,7 +2,7 @@
 //  AddableProtocol.swift
 //  Calculator
 //
-//  Created by 김찬우 on 2021/03/26.
+//  Created by Coda, Summer, Ryan on 2021/03/26.
 //
 
 import Foundation
@@ -16,8 +16,6 @@ protocol Addable {
 
 extension Addable {
     mutating func add(_ operatedNumber: T, and operatingNumber: T) {
-        let sumResult = stack.sumAllElements()
-        stack.reset()
-        stack.push(sumResult)
+        stack.push(operatedNumber + operatingNumber)
     }
 }

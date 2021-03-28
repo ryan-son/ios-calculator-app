@@ -1,6 +1,6 @@
 //
 //  Calculator - AppDelegate.swift
-//  Created by yagom. 
+//  Created by Coda, Summer, Ryan. 
 //  Copyright © yagom. All rights reserved.
 // 
 
