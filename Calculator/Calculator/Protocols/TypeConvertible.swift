@@ -10,6 +10,5 @@ import Foundation
 protocol TypeConvertible {
     associatedtype T
     
-    var userInput: T { get set }
     func inputAndConvertType() -> T
 }

@@ -8,7 +8,5 @@
 import Foundation
 
 protocol CalculationExecutable {
-    associatedtype Operator
-    
-    mutating func executeCalculation(of operator: Operator)
+    mutating func executeCalculation(of _operator: Operator)
 }
