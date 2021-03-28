@@ -40,12 +40,12 @@ extension Stack where T: Numeric {
     }
     
     mutating func subtractAllElements() -> T {
-        var sumResult: T = 0
+        var subtractResult: T = (self.list.first ?? 0) * 2
         for element in self.list {
-            sumResult -= element
+            subtractResult -= element
         }
         
-        return sumResult
+        return subtractResult
     }
 }
 
