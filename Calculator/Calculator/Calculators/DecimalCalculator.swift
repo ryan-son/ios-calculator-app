@@ -19,12 +19,19 @@ struct DecimalCalculator: Addable,
         stack.reset()
     }
     
-    mutating func multiply(_ operatedNumber: T, and operatingNumber: T) {
+    mutating func multiply(_ operatedNumber: Double, and operatingNumber: Double) {
         stack.push(operatedNumber * operatingNumber)
     }
     
-    mutating func divide(_ operatedNumber: T, and operatingNumber: T) {
+    mutating func divide(_ operatedNumber: Double, and operatingNumber: Double) {
         stack.push(operatedNumber / operatingNumber)
+    }
+    
+    func inputAndConvertType() -> Double {
+        guard let userInput = readLine(),
+              let TypeConvertedUserInput = Double(userInput) else { fatalError() }
+        
+        return TypeConvertedUserInput
     }
     
     mutating func executeCalculation(of _operator: Operator) {

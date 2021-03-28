@@ -13,12 +13,3 @@ protocol TypeConvertible {
     var userInput: T { get set }
     func inputAndConvertType() -> T
 }
-
-extension TypeConvertible {
-    func inputAndConvertType() -> T {
-        guard let userInput = readLine(),
-              let TypeConvertedUserInput = userInput as? T else { fatalError() }
-        
-        return TypeConvertedUserInput
-    }
-}
