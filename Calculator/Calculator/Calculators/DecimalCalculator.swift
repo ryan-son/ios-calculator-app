@@ -35,16 +35,16 @@ struct DecimalCalculator: Addable,
     }
     
     private mutating func executeAddition(with userInput: Double, and previousOperator: Operator) {
+        let poppedElement: Double = stack.pop() ?? 0
+        
         if previousOperator == .addition {
-            let poppedElement: Double = stack.pop() ?? 0
             add(poppedElement, and: userInput)
         } else if previousOperator == .subtraction {
-            let poppedElement: Double = stack.pop() ?? 0
             subtract(poppedElement, and: userInput)
         } else if previousOperator == .multiplication {
-            executeAdditionWherePreviousOperatorIsMultiplication(with: userInput)
+            executeAdditionWherePreviousOperatorIsMultiplication(with: userInput, and: poppedElement)
         } else if previousOperator == .division {
-            executeAdditionWherePreviousOperatorIsDivision(with: userInput)
+            executeAdditionWherePreviousOperatorIsDivision(with: userInput, and: poppedElement)
         } else {
             print("이전 연산자가 없는데 여기까지 왔어요.. 무슨일이죠..? \(#function)")
         }
@@ -52,9 +52,8 @@ struct DecimalCalculator: Addable,
         operatingSequence.push(.addition)
     }
     
-    private mutating func executeAdditionWherePreviousOperatorIsMultiplication(with userInput: Double) {
-        let poppedElement: Double = stack.pop() ?? 0
-        
+    private mutating func executeAdditionWherePreviousOperatorIsMultiplication(with userInput: Double,
+                                                                               and poppedElement: Double) {
         if operatingSequence.contains(.subtraction) {
             multiply(poppedElement, and: userInput)
             let result = stack.subtractAllElements()
@@ -68,9 +67,8 @@ struct DecimalCalculator: Addable,
         }
     }
     
-    private mutating func executeAdditionWherePreviousOperatorIsDivision(with userInput: Double) {
-        let poppedElement: Double = stack.pop() ?? 0
-        
+    private mutating func executeAdditionWherePreviousOperatorIsDivision(with userInput: Double,
+                                                                         and poppedElement: Double) {
         if operatingSequence.contains(.subtraction) {
             divide(poppedElement, and: userInput)
             let result = stack.subtractAllElements()
@@ -85,16 +83,16 @@ struct DecimalCalculator: Addable,
     }
     
     private mutating func executeSubtraction(with userInput: Double, and previousOperator: Operator) {
+        let poppedElement: Double = stack.pop() ?? 0
+        
         if previousOperator == .addition {
-            let poppedElement: Double = stack.pop() ?? 0
             add(poppedElement, and: userInput)
         } else if previousOperator == .subtraction {
-            let poppedElement: Double = stack.pop() ?? 0
             subtract(poppedElement, and: userInput)
         } else if previousOperator == .multiplication {
-            executeSubtractionWherePreviousOperatorIsMultiplication(with: userInput)
+            executeSubtractionWherePreviousOperatorIsMultiplication(with: userInput, and: poppedElement)
         } else if previousOperator == .division {
-            executeSubtractionWherePreviousOperatorIsDivision(with: userInput)
+            executeSubtractionWherePreviousOperatorIsDivision(with: userInput, and: poppedElement)
         } else {
             print("이전 연산자가 없는데 여기까지 왔어요.. 무슨일이죠..? \(#function)")
         }
@@ -102,9 +100,8 @@ struct DecimalCalculator: Addable,
         operatingSequence.push(.subtraction)
     }
     
-    private mutating func executeSubtractionWherePreviousOperatorIsMultiplication(with userInput: Double) {
-        let poppedElement: Double = stack.pop() ?? 0
-        
+    private mutating func executeSubtractionWherePreviousOperatorIsMultiplication(with userInput: Double,
+                                                                                  and poppedElement: Double) {
         if operatingSequence.contains(.addition) {
             multiply(poppedElement, and: userInput)
             let result = stack.sumAllElements()
@@ -118,9 +115,8 @@ struct DecimalCalculator: Addable,
         }
     }
     
-    private mutating func executeSubtractionWherePreviousOperatorIsDivision(with userInput: Double) {
-        let poppedElement: Double = stack.pop() ?? 0
-        
+    private mutating func executeSubtractionWherePreviousOperatorIsDivision(with userInput: Double,
+                                                                            and poppedElement: Double) {
         if operatingSequence.contains(.addition) {
             divide(poppedElement, and: userInput)
             let result = stack.sumAllElements()
