@@ -128,6 +128,9 @@ struct DecimalCalculator: Addable,
                 let poppedElement: Double = stack.pop() ?? 1
                 divide(poppedElement, and: userInput)
                 operatingSequence.push(_operator)
+            } else {
+                stack.push(userInput)
+                operatingSequence.push(_operator)
             }
         case .division:
             if previousOperator == .multiplication {
@@ -137,6 +140,9 @@ struct DecimalCalculator: Addable,
             } else if previousOperator == .division {
                 let poppedElement: Double = stack.pop() ?? 1
                 divide(poppedElement, and: userInput)
+            } else {
+                stack.push(userInput)
+                operatingSequence.push(_operator)
             }
         default:
             print("십진 계산에 적합하지 않은 연산자입니다.")
