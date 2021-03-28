@@ -44,3 +44,9 @@ extension Stack where T: Numeric {
         return sumResult
     }
 }
+
+extension Stack where T: Equatable {
+    func contains(_ element: T) -> Bool {
+        return list.contains { $0 == element }
+    }
+}
